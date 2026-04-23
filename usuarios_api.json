@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "nombre_completo": "Ana Pérez",
+    "email": "ana@example.com",
+    "detalles": { "edad": 30, "pais_residencia": "ES", "profesion": "Developer" }
+  },
+  {
+    "id": 102,
+    "nombre_completo": "Luis García",
+    "email": "luis@example.com",
+    "detalles": { "edad": 25, "pais_residencia": "AR", "profesion": "Designer" }
+  },
+  {
+    "id": 103,
+    "nombre_completo": "Sofía Rodríguez",
+    "email": "sofia@example.com",
+    "detalles": { "edad": 22, "pais_residencia": "ES", "profesion": "QA" }
+  },
+  {
+    "id": 104,
+    "nombre_completo": "Carlos Sánchez",
+    "email": "carlos@example.com",
+    "detalles": { "edad": 34, "pais_residencia": "MX", "profesion": "Manager" }
+  }
+]
