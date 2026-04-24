@@ -2,7 +2,7 @@ const procesarListas = () => {
     const invitados = new Set();
     return {
         todosLosInvitados: (...listas) => {
-            return listas.flat()
+            return listas.flat().length;
         },
         invitadosUnicos: (...listas) => {
             listas.forEach(lista => {
