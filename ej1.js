@@ -35,7 +35,6 @@ const crearGestorTareas = () => {
                 tarea.etiquetas.has(etiqueta)
             );
         },
-
         //obtenerResumenTareas()`: Devuelve un objeto con `{ total, completadas, pendientes }
         obtenerResumenTareas: () => {
             const resumen = { total: tareas.size, completadas: 0, pendientes: 0 };
