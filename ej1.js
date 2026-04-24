@@ -1,7 +1,7 @@
 const crearGestorTareas = () => {
-    // El Map está encapsulado dentro del closure
+    // El Map está encapsulado dentro de la funcion "padre" (Closure)
     const tareas = new Map();
-
+    
     return {
         agregarTarea: ({ id, descripcion, etiquetas = [] }) => {
             if (tareas.has(id)) {
@@ -35,13 +35,29 @@ const crearGestorTareas = () => {
             );
         },
 
-        listarTareas: () => {
+        //obtenerResumenTareas()`: Devuelve un objeto con `{ total, completadas, pendientes }
+        obtenerResumenTareas: () => {
+            const resumen = { total: 0, completadas: 0, pendientes: 0 };
+            tareas.forEach(tarea => {
+                resumen.total++;
+                if (tarea.completada) {
+                    resumen.completadas++;
+                } else {
+                    resumen.pendientes++;
+                }
+            });
+            return resumen;
+        },
+
+        // Método para auxiliar para mostrar el Map de tareas
+        mostrarTareas: () => {
             return Array.from(tareas.values());
         }
     };
+    
 };
 
-// Uso del gestor
+// Instanciamos esa función "Padre" gestor
 const gestor = crearGestorTareas();
 
 console.log("--- Agregando tareas ---");
@@ -50,12 +66,17 @@ gestor.agregarTarea({ id: 2, descripcion: "Estudiar JS Avanzado", etiquetas: ["e
 gestor.agregarTarea({ id: 1, descripcion: "Tarea duplicada", etiquetas: ["test"] }); 
 
 console.log("\n--- Listado completo ---");
-console.log(gestor.listarTareas());
+//---Funciones dentro del closure (hijas)-----
+
 
 console.log("\n--- Filtrando por etiqueta 'estudio' ---");
 console.log(gestor.obtenerTareasPorEtiqueta("estudio"));
 
 console.log("\n--- Marcando tarea 1 como completada ---");
 gestor.marcarCompletada(1);
-console.log(gestor.listarTareas().find(t => t.id === 1));
 
+console.log("\n--- Resumen de tareas ---");
+console.log(gestor.obtenerResumenTareas());
+
+console.log("\n--- Listado completo después de marcar completada ---");
+console.dir(gestor.mostrarTareas());

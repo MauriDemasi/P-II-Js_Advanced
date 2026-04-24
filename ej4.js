@@ -19,11 +19,12 @@ const crearRegistroEventos = () => {
     };
 }
 
-console.log("--- Agregando eventos ---");
+//Objeto que se va a desestructurar en la invocacion a la funcion obtenerEventosEntre()
 const rango = {
     inicio: Date.now(),
     fin: Date.now() + 1000
 };
+console.log("--- Agregando eventos ---");
 const registro = crearRegistroEventos();
 
 registro.registrarEvento("Evento 1");
@@ -33,7 +34,7 @@ registro.registrarEvento("Evento 4");
 registro.registrarEvento("Evento 5");
 registro.registrarEvento("Evento 6");
 
-console.log("\n--- Eventos en el rango ---");
+console.log("--- Eventos en el rango ---");
 console.log(registro.obtenerEventosEntre(rango));
 
 
