@@ -1,7 +1,7 @@
 const crearGestorTareas = () => {
     // El Map está encapsulado dentro de la funcion "padre" (Closure)
     const tareas = new Map();
-    
+
     return {
         agregarTarea: ({ id, descripcion, etiquetas = [] }) => {
             if (tareas.has(id)) {
@@ -30,16 +30,16 @@ const crearGestorTareas = () => {
 
         obtenerTareasPorEtiqueta: (etiqueta) => {
             // Iteramos el Map y verificamos el Set de etiquetas
-            return Array.from(tareas.values()).filter(tarea => 
+            return Array.from(tareas.values())
+            .filter(tarea => 
                 tarea.etiquetas.has(etiqueta)
             );
         },
 
         //obtenerResumenTareas()`: Devuelve un objeto con `{ total, completadas, pendientes }
         obtenerResumenTareas: () => {
-            const resumen = { total: 0, completadas: 0, pendientes: 0 };
+            const resumen = { total: tareas.size, completadas: 0, pendientes: 0 };
             tareas.forEach(tarea => {
-                resumen.total++;
                 if (tarea.completada) {
                     resumen.completadas++;
                 } else {

@@ -1,11 +1,20 @@
-const procesarListas = (...listas) => {
-    const invitadosUnicos = new Set(listas.flat());
-    const conteoTotalInvitados = listas.flat().length;
-    const conteoInvitadosUnicos = invitadosUnicos.size;
+const procesarListas = () => {
+    const invitados = new Set();
     return {
-        invitadosUnicos,
-        conteoTotalInvitados,
-        conteoInvitadosUnicos
+        todosLosInvitados: (...listas) => {
+            return listas.flat()
+        },
+        invitadosUnicos: (...listas) => {
+            listas.forEach(lista => {
+                lista.forEach(invitado => invitados.add(invitado));
+            });
+            return Array.from(invitados);
+        },
+        contarInvitadosUnicos: () => {
+            
+            return invitados.size;
+        }
+
     };
 }
 
@@ -13,4 +22,7 @@ const lista1 = ["Juan", "Maria", "Pedro"];
 const lista2 = ["Maria", "Ana", "Luis"];
 const lista3 = ["Pedro", "Ana", "Carlos"];
 
-console.log(procesarListas(lista1, lista2, lista3));
+const procesadorDeListas = procesarListas();
+console.log(procesadorDeListas.todosLosInvitados(lista1, lista2, lista3));
+console.log(procesadorDeListas.invitadosUnicos(lista1, lista2, lista3));
+console.log(procesadorDeListas.contarInvitadosUnicos());
